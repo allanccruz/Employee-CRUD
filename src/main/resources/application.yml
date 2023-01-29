@@ -1,1 +1,16 @@
-
+spring:
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  flyway:
+    locations:
+      - filesystem:src/main/resources/db/migration
+  jackson:
+    default-property-inclusion: non_null
