@@ -5,6 +5,7 @@ import com.github.allanccruz.EmployeeCRUD.api.dto.response.EmployeeResponse;
 import com.github.allanccruz.EmployeeCRUD.api.entities.Employee;
 import com.github.allanccruz.EmployeeCRUD.api.repository.EmployeeRepository;
 import com.github.allanccruz.EmployeeCRUD.api.service.EmployeeService;
+import java.util.UUID;
 import javax.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,5 +23,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeResponse save(EmployeeRequest employeeRequest) {
         Employee employee = employeeRepository.saveAndFlush(mapper.map(employeeRequest, Employee.class));
         return mapper.map(employee, EmployeeResponse.class);
+    }
+
+    @Override
+    public EmployeeResponse getById(UUID id) {
+        return mapper.map(employeeRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException()), EmployeeResponse.class);
     }
 }
