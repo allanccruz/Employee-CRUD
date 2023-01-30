@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -34,6 +35,12 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.OK)
     public EmployeeResponse getEmployeeById(@PathVariable UUID id) {
         return employeeService.getById(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public EmployeeResponse updateEmployee(@PathVariable UUID id, @RequestBody EmployeeRequest employeeRequest) {
+        return employeeService.update(id, employeeRequest);
     }
 
 }

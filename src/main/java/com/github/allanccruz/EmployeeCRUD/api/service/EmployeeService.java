@@ -8,4 +8,6 @@ public interface EmployeeService {
     EmployeeResponse save(EmployeeRequest employeeRequest);
 
     EmployeeResponse getById(UUID id);
+
+    EmployeeResponse update(UUID id, EmployeeRequest employeeRequest);
 }
