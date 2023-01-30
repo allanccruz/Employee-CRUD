@@ -10,4 +10,6 @@ public interface EmployeeService {
     EmployeeResponse getById(UUID id);
 
     EmployeeResponse update(UUID id, EmployeeRequest employeeRequest);
+
+    void deleteById(UUID id);
 }

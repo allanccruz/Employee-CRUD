@@ -42,6 +42,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         return mapper.map(employee, EmployeeResponse.class);
     }
 
+    @Override
+    public void deleteById(UUID id) {
+        Employee employee = mapper.map(getById(id), Employee.class);
+        employeeRepository.deleteById(employee.getId());
+    }
+
     private void setNewEmployeeAtributes(EmployeeRequest employeeRequest, Employee employee) {
 
         employee.setName(employeeRequest.getName());
