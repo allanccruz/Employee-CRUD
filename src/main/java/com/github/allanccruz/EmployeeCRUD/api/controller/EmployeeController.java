@@ -6,6 +6,7 @@ import com.github.allanccruz.EmployeeCRUD.api.service.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.UUID;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class EmployeeController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Register employee")
-    public EmployeeResponse createEmployee(@RequestBody EmployeeRequest employeeRequest) {
+    public EmployeeResponse createEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
         return employeeService.save(employeeRequest);
     }
 
@@ -46,7 +47,7 @@ public class EmployeeController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Update employee by id")
-    public EmployeeResponse updateEmployee(@PathVariable UUID id, @RequestBody EmployeeRequest employeeRequest) {
+    public EmployeeResponse updateEmployee(@PathVariable UUID id, @RequestBody @Valid EmployeeRequest employeeRequest) {
         return employeeService.update(id, employeeRequest);
     }
 

@@ -3,6 +3,8 @@ package com.github.allanccruz.EmployeeCRUD.api.service.impl;
 import com.github.allanccruz.EmployeeCRUD.api.dto.request.EmployeeRequest;
 import com.github.allanccruz.EmployeeCRUD.api.dto.response.EmployeeResponse;
 import com.github.allanccruz.EmployeeCRUD.api.entities.Employee;
+import com.github.allanccruz.EmployeeCRUD.api.enums.Errors;
+import com.github.allanccruz.EmployeeCRUD.api.exceptions.NotFoundException;
 import com.github.allanccruz.EmployeeCRUD.api.repository.EmployeeRepository;
 import com.github.allanccruz.EmployeeCRUD.api.service.EmployeeService;
 import java.time.LocalDateTime;
@@ -30,14 +32,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public EmployeeResponse getById(UUID id) {
         return mapper.map(employeeRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException()), EmployeeResponse.class);
+                .orElseThrow(() -> new NotFoundException(Errors.EC101.getMessage(), Errors.EC101.getCode())), EmployeeResponse.class);
     }
 
     @Override
     @Transactional
     public EmployeeResponse update(UUID id, EmployeeRequest employeeRequest) {
         Employee employee = mapper.map(getById(id), Employee.class);
-        setNewEmployeeAtributes(employeeRequest, employee);
+        setNewEmployeeAttributes(employeeRequest, employee);
         employeeRepository.save(employee);
         return mapper.map(employee, EmployeeResponse.class);
     }
@@ -48,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(employee.getId());
     }
 
-    private void setNewEmployeeAtributes(EmployeeRequest employeeRequest, Employee employee) {
+    private void setNewEmployeeAttributes(EmployeeRequest employeeRequest, Employee employee) {
 
         employee.setName(employeeRequest.getName());
         employee.setLastName(employeeRequest.getLastName());
