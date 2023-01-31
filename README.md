@@ -19,24 +19,25 @@
 1. Primeiramente certifique-se de ter o Docker Compose instalado em sua máquina para poder utilizar seus
    comandos;
 
-2. Após clonar a aplicação, renomeie o arquivo **example.env** que está no diretório **docker/config** para apenas *
-   *.env** e altere os dados da mesma forma como demonstrado a seguir:
+2. Após clonar a aplicação, renomeie o arquivo <strong>example.env</strong> que está no diretório <strong>
+   docker/config</strong> para apenas <strong>.env</strong> e altere os valores das variáveis a seguir para o que você
+   preferir;
    ~~~
     MYSQL_DATABASE=nome-do-seu-banco-de-dados
     MYSQL_USER=seu-usuário
     MYSQL_PASSWORD=sua-senha
     MYSQL_ROOT_PASSWORD=sua-senha-root
    ~~~
-3. Renomeie também o arquivo **application-dev-example.yml** que está no diretório **src/main/resources** para apenas *
-   *application-dev.yml** e troque as variáveis para os mesmos valores que foram adicionados no arquivo **.env** citado
-   acima;
-4. Abra o terminal no diretório **docker** e digite o seguinte comando para subir o banco de dados que será utilizado
-   pela API:
+3. Crie as váriáveis de ambiente do arquivo <strong>application-dev.yml</strong> e atribua a elas os mesmos valores que
+   você definiu no arquivo <strong>.env</strong> citado acima, ou simplesmente substitua essas variáveis por esses
+   valores direto no arquivo <strong>application-dev.yml</strong>;
+4. Abra o terminal no diretório <strong>docker</strong> e digite o seguinte comando para subir o banco de dados que será
+   utilizado pela API;
    ~~~
    docker-compose up -d
    ~~~
 5. Agora, abra o terminal dentro da pasta raíz do projeto e digite o seguinte comando para iniciar a aplicação (por
-   padrão do Spring Boot, a aplicação irá rodar na porta 8080):
+   padrão do Spring Boot, a aplicação irá rodar na porta 8080);
    ~~~
    ./mvnw spring-boot:run 
    ~~~
