@@ -4,13 +4,9 @@ services:
     container_name: mysql-db
     image: mysql
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql_db_data:/var/lib/mysql
     restart: always
     env_file:
       - config/.env
-    ports:
-      - '3306:3306'
-    expose:
-      - '3306'
 volumes:
-  db_data: { }
+  mysql_db_data: { }

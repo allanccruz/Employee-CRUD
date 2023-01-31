@@ -27,6 +27,7 @@
     MYSQL_USER=seu-usuário
     MYSQL_PASSWORD=sua-senha
     MYSQL_ROOT_PASSWORD=sua-senha-root
+    MYSQL_TCP_PORT=3307
    ~~~
 3. Crie as váriáveis de ambiente do arquivo <strong>application-dev.yml</strong> e atribua a elas os mesmos valores que
    você definiu no arquivo <strong>.env</strong> citado acima, ou simplesmente substitua essas variáveis por esses
