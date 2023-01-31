@@ -27,11 +27,17 @@
     MYSQL_USER=seu-usuário
     MYSQL_PASSWORD=sua-senha
     MYSQL_ROOT_PASSWORD=sua-senha-root
-    MYSQL_TCP_PORT=3307
    ~~~
 3. Crie as váriáveis de ambiente do arquivo <strong>application-dev.yml</strong> e atribua a elas os mesmos valores que
    você definiu no arquivo <strong>.env</strong> citado acima, ou simplesmente substitua essas variáveis por esses
    valores direto no arquivo <strong>application-dev.yml</strong>;
+   <br>
+   <br>
+   <strong>OBSERVAÇÃO</strong>: a váriavel de ambiente ${PORT} deve ter o mesmo valor que a porta exposta pelo container
+   do MySQL. A porta exposta é o primeiro valor do atributo "<strong>ports:</strong>" no arquivo <strong>
+   docker-compose.yml</strong>, que nesse caso é <strong>3307</strong>, mas você pode usar a porta que preferir.
+   <br>
+   <br>
 4. Abra o terminal no diretório <strong>docker</strong> e digite o seguinte comando para subir o banco de dados que será
    utilizado pela API;
    ~~~

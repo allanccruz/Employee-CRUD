@@ -8,5 +8,7 @@ services:
     restart: always
     env_file:
       - config/.env
+    ports:
+      - '3307:3306'
 volumes:
   mysql_db_data: { }
