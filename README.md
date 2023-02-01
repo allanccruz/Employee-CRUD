@@ -58,6 +58,6 @@ http://localhost:8080/swagger-ui/index.html#/
 Com a aplicação rodando você poderá:
 
 - Criar funcionário;
-- Buscar um funcinário pelo seu id;
+- Buscar um funcionário pelo seu id;
 - Atualizar funcionário;
 - Deletar funcionário.
