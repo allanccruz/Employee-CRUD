@@ -5,6 +5,7 @@ import com.github.allanccruz.EmployeeCRUD.api.dto.response.FieldErrorResponse;
 import com.github.allanccruz.EmployeeCRUD.api.enums.Errors;
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -48,6 +49,20 @@ public class ControllerAdvice {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorResponse> handleDataIntegrityViolationException(DataIntegrityViolationException exception, WebRequest request) {
+
+        ErrorResponse response = new ErrorResponse();
+
+        response.setHttpCode(HttpStatus.NOT_FOUND.value());
+        response.setMessage(Errors.EC002.getMessage());
+        response.setInternalCode(Errors.EC002.getCode());
+        response.setPath(request.getDescription(false));
+        response.setTimestamp(LocalDateTime.now());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
     }
 
 }
