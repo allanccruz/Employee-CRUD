@@ -16,8 +16,8 @@
 
 ## Como executar a API:
 
-1. Primeiramente certifique-se de ter o Docker Compose instalado em sua máquina para poder utilizar seus
-   comandos;
+1. Primeiramente certifique-se de ter o <strong>Docker Compose</strong> e o <strong>Java JDK 11</strong> instalados em
+   sua máquina para poder utilizar seus comandos e rodar a API;
 
 2. Após clonar a aplicação, renomeie o arquivo <strong>example.env</strong> que está no diretório <strong>
    docker/config</strong> para apenas <strong>.env</strong> e altere os valores das variáveis a seguir para o que você
@@ -59,5 +59,5 @@ Com a aplicação rodando você poderá:
 
 - Criar funcionário;
 - Buscar um funcinário pelo seu id;
-- Atualizar funcionároio;
+- Atualizar funcionário;
 - Deletar funcionário.
