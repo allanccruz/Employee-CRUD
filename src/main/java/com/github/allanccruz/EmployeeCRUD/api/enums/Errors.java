@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum Errors {
 
     EC001("EC-001", "Invalid request."),
+    EC002("EC-002", "Email or NisPis already in use by someone else."),
     EC101("EC-101", "This Employee does not exists.");
 
     private final String code;
