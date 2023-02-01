@@ -35,7 +35,7 @@ public class ControllerAdvice {
 
         ErrorResponse response = new ErrorResponse();
 
-        response.setHttpCode(HttpStatus.UNPROCESSABLE_ENTITY.value());
+        response.setHttpCode(HttpStatus.BAD_REQUEST.value());
         response.setMessage(Errors.EC001.getMessage());
         response.setInternalCode(Errors.EC001.getCode());
         response.setErrors(exception.getBindingResult()
@@ -46,7 +46,7 @@ public class ControllerAdvice {
         response.setPath(request.getDescription(false));
         response.setTimestamp(LocalDateTime.now());
 
-        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(response);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 
     }
 

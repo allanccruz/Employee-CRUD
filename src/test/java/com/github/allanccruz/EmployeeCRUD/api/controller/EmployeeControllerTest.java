@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.allanccruz.EmployeeCRUD.api.dto.request.EmployeeRequest;
 import com.github.allanccruz.EmployeeCRUD.api.dto.response.EmployeeResponse;
 import com.github.allanccruz.EmployeeCRUD.api.exceptions.NotFoundException;
-import com.github.allanccruz.EmployeeCRUD.api.service.impl.EmployeeServiceImpl;
+import com.github.allanccruz.EmployeeCRUD.api.service.EmployeeService;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
@@ -43,10 +43,10 @@ class EmployeeControllerTest {
     MockMvc mvc;
 
     @MockBean
-    EmployeeServiceImpl employeeService;
+    EmployeeService employeeService;
 
     @MockBean
-    ModelMapper modelMapper;
+    ModelMapper mapper;
 
     static EmployeeRequest createEmployeeRequest() {
         return EmployeeRequest.builder()
