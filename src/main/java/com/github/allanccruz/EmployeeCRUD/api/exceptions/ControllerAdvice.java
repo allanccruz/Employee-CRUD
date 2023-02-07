@@ -56,13 +56,13 @@ public class ControllerAdvice {
 
         ErrorResponse response = new ErrorResponse();
 
-        response.setHttpCode(HttpStatus.NOT_FOUND.value());
+        response.setHttpCode(HttpStatus.CONFLICT.value());
         response.setMessage(Errors.EC002.getMessage());
         response.setInternalCode(Errors.EC002.getCode());
         response.setPath(request.getDescription(false));
         response.setTimestamp(LocalDateTime.now());
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
     }
 
 }
